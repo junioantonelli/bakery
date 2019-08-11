@@ -21,7 +21,7 @@ public class Order implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	long number;
+	Long number;
 
 	State state;
 
@@ -47,11 +47,11 @@ public class Order implements Serializable{
 
 	public Order() {}
 
-	public long getNumber() {
+	public Long getNumber() {
 		return number;
 	}
 
-	public void setNumber(long number) {
+	public void setNumber(Long number) {
 		this.number = number;
 	}
 
