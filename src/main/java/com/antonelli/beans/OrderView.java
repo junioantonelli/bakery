@@ -7,19 +7,20 @@ import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.annotation.ManagedProperty;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import com.antonelli.entities.Order;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class OrderView  implements Serializable{
 
 	private static final long	serialVersionUID	= 1L;
-	List<Order>								lista;
-	private Order							selectedCurso;
+	List<Order>								list;
+	private Order							selectedOrder;
 
-	@ManagedProperty(value = "#{databaseQueries}")
-	private DatabaseQueries		queries;
 
 	@PostConstruct
 	public void init() {
@@ -27,56 +28,29 @@ public class OrderView  implements Serializable{
 	}
 
 	public void updateOrders() {
-		try {
-			Order order = new Order();
-			ResultSet resultCurso = queries.selectAll(new Curso());
-			this.lista = new ArrayList<Curso>();
-
-			// monta a lista de usuários para o formulario de pesquisa
-			while (resultCurso.next()) {
-				curso.setIdCurso(resultCurso.getInt("id_curso"));
-				curso.setNome(resultCurso.getString("curso"));
-				this.lista.add(curso);
-				curso = new Curso();
-			}
-		} catch (SQLException e) {
-			System.out.println("Erro no CursoView: " + e);
-			e.printStackTrace();
-		}
+		
 	}
 
 	public void deleteCurso() {
-		queries.remove(this.selectedCurso);
-		this.lista.remove(this.selectedCurso);
-		this.selectedCurso = null;
-		this.showMessage();
 	}
 
 	public void showMessage() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Removido"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Removed"));
 	}
 
-	public List<Curso> getLista() {
-		return lista;
+	public List<Order> getLista() {
+		return list;
 	}
 
-	public void setLista(List<Curso> lista) {
-		this.lista = lista;
+	public void setLista(List<Order> list) {
+		this.list = list;
 	}
 
-	public DatabaseQueries getQueries() {
-		return queries;
+	public Order getSelectedOrder() {
+		return selectedOrder;
 	}
 
-	public void setQueries(DatabaseQueries queries) {
-		this.queries = queries;
-	}
-
-	public Curso getSelectedCurso() {
-		return selectedCurso;
-	}
-
-	public void setSelectedCurso(Curso selectedCurso) {
-		this.selectedCurso = selectedCurso;
+	public void setSelectedOrder(Order selectedOrder) {
+		this.selectedOrder = selectedOrder;
 	}
 }

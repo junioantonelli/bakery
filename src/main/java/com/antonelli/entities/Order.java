@@ -1,16 +1,27 @@
 package com.antonelli.entities;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
-public class Order {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	enum State {
-		NEW, CONFIRMED, READY, DELIVERED, PROBLEM, CANCELLED;
-	}
+import com.antonelli.types.State;
 
-	int number;
+@Entity
+@Table(name="order")
+public class Order implements Serializable{
+
+	private static final long serialVersionUID = 6536396416248742913L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	long number;
 
 	State state;
 
@@ -24,11 +35,23 @@ public class Order {
 	
 	List<History> history;
 
-	public int getNumber() {
+	public Order(State state, LocalDateTime dueTimeDate, Customer customer, String details,
+			Map<Product, Integer> products) {
+		super();
+		this.state = state;
+		this.dueTimeDate = dueTimeDate;
+		this.customer = customer;
+		this.details = details;
+		this.products = products;
+	}
+
+	public Order() {}
+
+	public long getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(long number) {
 		this.number = number;
 	}
 
@@ -79,5 +102,5 @@ public class Order {
 	public void setHistory(List<History> history) {
 		this.history = history;
 	}
-
+	
 }

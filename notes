@@ -1,1 +1,2 @@
-the root directory for files is resources (see in href path in xhtml).
+-> The root directory for files is resources (see in href path in xhtml).
+-> The path in spring.datasource.url=jdbc:h2:file:/data/demo, like /data/demo here, has to be absolute
