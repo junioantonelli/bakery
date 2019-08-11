@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Bespoke Bakery</title>
+	<link rel="shortcut icon" type="image/png" href="../icons/favicon.png" />
+	<meta charset="utf-8" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+</h:head>
+
+
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="west" size="220">
+			<h:panelGroup style="display:block; text-align:center">
+				<p:panel>
+					<p:outputLabel style="font-weight:bold; font-size:22px">BESPOKE BAKERY</p:outputLabel>
+				</p:panel>
+				<p:graphicImage name="icons/order.png" style="width:190px" />
+				<p:panelGrid columns="1" styleClass="ui-noborder" layout="grid"
+					style="text-align: center">
+					<p:row>
+						<p:commandButton value="Storefront" icon="pi pi-shopping-cart"
+							style="width:130px;height:70px"
+							action="#{layoutUI.configureView('/bakery/order_list.xhtml')}"
+							ajax="true" update="identificador" />
+					</p:row>
+					<p:row>
+						<p:commandButton value="Products" icon="pi pi-th-large"
+							style="width:130px;height:70px"
+							action="#{layoutUI.configureView('/bakery/product_list.xhtml')}"
+							ajax="true" update="identificador" />
+					</p:row>
+					<p:row>
+						<p:commandButton value="Users" icon="pi pi-user"
+							style="width:130px;height:70px"
+							action="#{layoutUI.configureView('/bakery/user_list.xhtml')}"
+							ajax="true" update="identificador" />
+					</p:row>
+					<p:row>
+						<p:commandButton value="Exit" icon="pi pi-sign-out"
+							style="width:130px;height:70px" action="#{login.logout()}"
+							ajax="true" />
+					</p:row>
+				</p:panelGrid>
+			</h:panelGroup>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<h:form id="identificador">
+				<ui:insert>
+					<ui:include src="#{layoutUI.view}" />
+				</ui:insert>
+			</h:form>
+		</p:layoutUnit>
+
+	</p:layout>
+	<p:growl id="msgs" showDetail="true" />
+</h:body>
+</html>

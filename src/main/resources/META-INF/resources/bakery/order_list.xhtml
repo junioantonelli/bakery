@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>BESPOKE BAKERY</title>
+	<link rel="shortcut icon" type="image/png"
+		href="../resources/icons/favicon.png" />
+	<meta charset="utf-8" />
+</h:head>
+<h:body>
+	<ui:composition>
+		<p:panel header="Orders">
+			<p:growl id="growl" sticky="false">
+				<p:autoUpdate />
+			</p:growl>
+			<p:panelGrid columns="1" styleClass="ui-noborder">
+				<p:dataTable id="orderTable" var="order" value="#{orderView.lista}"
+					rowKey="#{curso.idCurso}" selection="#{cursoView.selectedCurso}"
+					selectionMode="single">
+					<f:facet name="header">
+						Lista de Cursos
+					</f:facet>
+					<p:column headerText="Nome">
+						<h:outputText value="#{curso.nome}" />
+					</p:column>
+				</p:dataTable>
+				<p:contextMenu for="cursoTable">
+					<p:menuitem value="Delete" update="cursoTable" icon="ui-icon-close"
+						actionListener="#{cursoView.deleteCurso()}">
+						<p:ajax update="cursoTable" />
+					</p:menuitem>
+				</p:contextMenu>
+			</p:panelGrid>
+		</p:panel>
+	</ui:composition>
+</h:body>
+</html>

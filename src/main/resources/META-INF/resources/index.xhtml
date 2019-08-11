@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Bespoke Bakery</title>
+	<link rel="shortcut icon" type="image/png" href="../icons/favicon.png" />
+	<meta charset="utf-8" />
+</h:head>
+
+<h:body>
+	<div style="text-align: center">
+		<h1>BESPOKE BAKERY SYSTEM</h1>
+	</div>
+	<h:form id="form">
+		<p:panel id="panel" header="AUTENTICATION"
+			style="width:260px; margin:auto; text-align: center">
+			<p:panelGrid columns="1" styleClass="ui-noborder" layout="tabular"
+				style="text-align: center">
+				<p:row>
+					<p:graphicImage name="icons/logo.png" />
+				</p:row>
+				<p:row>
+					<h:outputLabel for="user" value="LOGIN" />
+				</p:row>
+				<p:row>
+					<p:inputText id="user" requiredMessage="Please type your login"
+						required="true" value="#{login.usuario}">
+						<p:watermark value="Type your login" for="user" />
+					</p:inputText>
+				</p:row>
+				<p:row>
+					<h:outputLabel for="senha" value="PASSWORD" />
+				</p:row>
+				<p:row>
+				<p:password id="senha" required="true"
+					requiredMessage="Please type your password" value="#{login.senha}">
+					<p:watermark value="Type password" for="senha" />
+				</p:password>
+				</p:row>
+				<p:row>
+				<p:commandButton id="botao" value="Login"
+					binding="#{login.component}" action="#{login.validateLogin()}"
+					ajax="true" update="messages" />
+				</p:row>
+				<p:row>
+					<p:messages id="messages" showDetail="false" closable="true" />
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+
+	</h:form>
+</h:body>
+</html>
