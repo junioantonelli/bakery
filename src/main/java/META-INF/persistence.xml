@@ -7,7 +7,6 @@
 		<class>com.antonelli.entities.Order</class>
 		<class>com.antonelli.entities.Product</class>
 		<class>com.antonelli.entities.User</class>
-		<class>com.antonelli.entities.History</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
 				value="org.h2.Driver" />

@@ -39,11 +39,11 @@ public class OrderView implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Removed"));
 	}
 
-	public List<Order> getLista() {
+	public List<Order> getList() {
 		return list;
 	}
 
-	public void setLista(List<Order> list) {
+	public void setList(List<Order> list) {
 		this.list = list;
 	}
 

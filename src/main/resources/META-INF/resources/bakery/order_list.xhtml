@@ -18,20 +18,35 @@
 				<p:autoUpdate />
 			</p:growl>
 			<p:panelGrid columns="1" styleClass="ui-noborder">
-				<p:dataTable id="orderTable" var="order" value="#{orderView.lista}"
-					rowKey="#{curso.idCurso}" selection="#{cursoView.selectedCurso}"
+				<p:dataTable id="orderTable" var="order" value="#{orderView.list}"
+					rowKey="#{order.id}" selection="#{orderView.selectedOrder}"
 					selectionMode="single">
 					<f:facet name="header">
-						Lista de Cursos
+						Order List
 					</f:facet>
-					<p:column headerText="Nome">
-						<h:outputText value="#{curso.nome}" />
+					<p:column headerText="Id">
+						<h:outputText value="#{order.id}" />
+					</p:column>
+					<p:column headerText="State">
+						<h:outputText value="#{order.state}" />
+					</p:column>
+					<p:column headerText="Details">
+						<h:outputText value="#{order.details}" />
+					</p:column>
+					<p:column headerText="Customer Name">
+						<h:outputText value="#{order.customerName}" />
+					</p:column>
+					<p:column headerText="Customer Address">
+						<h:outputText value="#{order.customerAddress}" />
+					</p:column>
+					<p:column headerText="Due Time and Date">
+						<h:outputText value="#{order.dueTimeDate}" />
 					</p:column>
 				</p:dataTable>
-				<p:contextMenu for="cursoTable">
-					<p:menuitem value="Delete" update="cursoTable" icon="ui-icon-close"
-						actionListener="#{cursoView.deleteCurso()}">
-						<p:ajax update="cursoTable" />
+				<p:contextMenu for="orderTable">
+					<p:menuitem value="Delete" update="orderTable" icon="ui-icon-close"
+						actionListener="#{orderView.deleteOrder()}">
+						<p:ajax update="orderTable" />
 					</p:menuitem>
 				</p:contextMenu>
 			</p:panelGrid>

@@ -2,6 +2,7 @@ package com.antonelli.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,17 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="history")
-public class History {
+@Table(name="message_history")
+public class MessageHistory {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Long id;
-
+	
+	@Column
 	LocalDateTime dateTime;
 	
-	User user;
+//	@Column
+//	User user;
 	
+	@Column
 	String message;
 
 	public LocalDateTime getDateTime() {
@@ -30,13 +34,13 @@ public class History {
 		this.dateTime = dateTime;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 
 	public String getMessage() {
 		return message;
@@ -53,5 +57,5 @@ public class History {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 }

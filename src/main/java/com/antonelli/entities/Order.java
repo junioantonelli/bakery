@@ -3,9 +3,11 @@ package com.antonelli.entities;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,45 +16,40 @@ import javax.persistence.Table;
 import com.antonelli.types.State;
 
 @Entity
-@Table(name="order")
+@Table(name="order_products")
 public class Order implements Serializable{
 
 	private static final long serialVersionUID = 6536396416248742913L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	Long number;
+	Long id;
 
+	@Enumerated(EnumType.STRING)
 	State state;
 
+	@Column
 	LocalDateTime dueTimeDate;
 
-	Customer customer;
+	@Column
+	String customerName;
+	
+	@Column
+	String customerAddress;
 
+	@Column
 	String details;
 
-	Map<Product, Integer> products;
+//	List<Product> products;
 	
-	List<History> history;
+//	List<MessageHistory> history;
 
-	public Order(State state, LocalDateTime dueTimeDate, Customer customer, String details,
-			Map<Product, Integer> products) {
-		super();
-		this.state = state;
-		this.dueTimeDate = dueTimeDate;
-		this.customer = customer;
-		this.details = details;
-		this.products = products;
+	public Long getId() {
+		return id;
 	}
 
-	public Order() {}
-
-	public Long getNumber() {
-		return number;
-	}
-
-	public void setNumber(Long number) {
-		this.number = number;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public State getState() {
@@ -71,14 +68,6 @@ public class Order implements Serializable{
 		this.dueTimeDate = dueTimeDate;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
 	public String getDetails() {
 		return details;
 	}
@@ -87,20 +76,36 @@ public class Order implements Serializable{
 		this.details = details;
 	}
 
-	public Map<Product, Integer> getProducts() {
-		return products;
+//	public List<MessageHistory> getHistory() {
+//		return history;
+//	}
+//
+//	public void setHistory(List<MessageHistory> history) {
+//		this.history = history;
+//	}
+
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public void setProducts(Map<Product, Integer> products) {
-		this.products = products;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
-	public List<History> getHistory() {
-		return history;
+	public String getCustomerAddress() {
+		return customerAddress;
 	}
 
-	public void setHistory(List<History> history) {
-		this.history = history;
+	public void setCustomerAddress(String customerAddress) {
+		this.customerAddress = customerAddress;
 	}
+
+//	public List<Product> getProducts() {
+//		return products;
+//	}
+//
+//	public void setProducts(List<Product> products) {
+//		this.products = products;
+//	}
 	
 }

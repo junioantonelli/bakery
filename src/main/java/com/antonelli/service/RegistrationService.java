@@ -1,9 +1,8 @@
 package com.antonelli.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.antonelli.repositories.CustomerRepository;
-import com.antonelli.repositories.HistoryRepository;
 import com.antonelli.repositories.OrderRepository;
 import com.antonelli.repositories.ProductRepository;
 import com.antonelli.repositories.UserRepository;
@@ -16,6 +15,7 @@ import com.antonelli.repositories.UserRepository;
  * @author antonelli
  *
  */
+@Component
 public class RegistrationService {
 
 	@Autowired
@@ -27,12 +27,6 @@ public class RegistrationService {
 	@Autowired
 	private ProductRepository productRepository;
 	
-	@Autowired
-	private HistoryRepository historyRepository;
-	
-	@Autowired
-	private CustomerRepository customerRepository;
-
 	public OrderRepository getOrderRepository() {
 		return orderRepository;
 	}
@@ -57,20 +51,4 @@ public class RegistrationService {
 		this.productRepository = productRepository;
 	}
 
-	public HistoryRepository getHistoryRepository() {
-		return historyRepository;
-	}
-
-	public void setHistoryRepository(HistoryRepository historyRepository) {
-		this.historyRepository = historyRepository;
-	}
-
-	public CustomerRepository getCustomerRepository() {
-		return customerRepository;
-	}
-
-	public void setCustomerRepository(CustomerRepository customerRepository) {
-		this.customerRepository = customerRepository;
-	}
-	
 }
