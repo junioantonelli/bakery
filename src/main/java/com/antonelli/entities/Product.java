@@ -1,5 +1,8 @@
 package com.antonelli.entities;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,9 +17,11 @@ public class Product {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Long id;
 
+	@Column
 	String name;
 	
-	double price;
+	@Column
+	BigDecimal price;
 
 	public String getName() {
 		return name;
@@ -26,11 +31,11 @@ public class Product {
 		this.name = name;
 	}
 
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

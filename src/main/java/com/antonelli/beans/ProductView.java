@@ -38,13 +38,19 @@ public class ProductView implements Serializable{
 	public void deleteProduct() {
 		service.getProductRepository().delete(selectedProduct);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Removed"));
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/bakery/main.xhtml");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	public List<Product> getLista() {
+	public List<Product> getList() {
 		return list;
 	}
 
-	public void setLista(List<Product> list) {
+	public void setList(List<Product> list) {
 		this.list = list;
 	}
 

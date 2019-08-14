@@ -37,9 +37,6 @@ public class OrderView implements Serializable {
 
 	public void deleteOrder() {
 		service.getOrderRepository().delete(this.selectedOrder);
-//		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("identificador:panelOrder");
-//		RequestContext.getCurrentInstance().update("foo:bar");
-//		PrimeFaces.current().ajax().update("identificador:panelOrder");
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Removed"));
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		try {

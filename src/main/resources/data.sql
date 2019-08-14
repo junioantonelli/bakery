@@ -15,3 +15,18 @@ INSERT INTO order_products (
   (7, 'READY',NULL, 'Paul', '2 Pwersten Rd', 'detail 7'),
   (8, 'READY',NULL, 'Luke', '1685 Awlink Ave', 'detail 8'),
   (9, 'NEW',NULL, 'Titus', '355 Sblowski St', 'detail 9');
+  
+  INSERT INTO product (
+		id, 
+		name, 
+		price
+		) VALUES
+  (1, 'Large Traditional Loaf', 1.99),
+  (2, 'Small Traditional Loaf', 2.99),
+  (3, 'Round Farmhouse', 0.99),
+  (4, 'Long Farmhouse Bloomer', 1.69),
+  (5, 'Sandwich Loaf', 2.49),
+  (6, 'Long Bake', 3.99),
+  (7, 'Ciabatta', 3.49),
+  (8, 'Focaccia', 1.49),
+  (9, 'Burger Buns', 2.99);
