@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -13,43 +13,40 @@
 </h:head>
 <h:body>
 	<ui:composition>
-		<p:panel header="Orders">
+		<p:panel id="panelOrder" header="Orders">
 			<p:growl id="growl" sticky="false">
 				<p:autoUpdate />
 			</p:growl>
-			<p:panelGrid columns="1" styleClass="ui-noborder">
-				<p:dataTable id="orderTable" var="order" value="#{orderView.list}"
-					rowKey="#{order.id}" selection="#{orderView.selectedOrder}"
-					selectionMode="single">
-					<f:facet name="header">
+			<p:dataTable id="orderTable" var="order" value="#{orderView.list}"
+				rowKey="#{order.id}" selection="#{orderView.selectedOrder}"
+				selectionMode="single">
+				<f:facet name="header">
 						Order List
 					</f:facet>
-					<p:column headerText="Id">
-						<h:outputText value="#{order.id}" />
-					</p:column>
-					<p:column headerText="State">
-						<h:outputText value="#{order.state}" />
-					</p:column>
-					<p:column headerText="Details">
-						<h:outputText value="#{order.details}" />
-					</p:column>
-					<p:column headerText="Customer Name">
-						<h:outputText value="#{order.customerName}" />
-					</p:column>
-					<p:column headerText="Customer Address">
-						<h:outputText value="#{order.customerAddress}" />
-					</p:column>
-					<p:column headerText="Due Time and Date">
-						<h:outputText value="#{order.dueTimeDate}" />
-					</p:column>
-				</p:dataTable>
-				<p:contextMenu for="orderTable">
-					<p:menuitem value="Delete" update="orderTable" icon="ui-icon-close"
-						actionListener="#{orderView.deleteOrder()}">
-						<p:ajax update="orderTable" />
-					</p:menuitem>
-				</p:contextMenu>
-			</p:panelGrid>
+				<p:column headerText="Id">
+					<h:outputText value="#{order.id}" />
+				</p:column>
+				<p:column headerText="State">
+					<h:outputText value="#{order.state}" />
+				</p:column>
+				<p:column headerText="Details">
+					<h:outputText value="#{order.details}" />
+				</p:column>
+				<p:column headerText="Customer Name">
+					<h:outputText value="#{order.customerName}" />
+				</p:column>
+				<p:column headerText="Customer Address">
+					<h:outputText value="#{order.customerAddress}" />
+				</p:column>
+				<p:column headerText="Due Time and Date">
+					<h:outputText value="#{order.dueTimeDate}" />
+				</p:column>
+			</p:dataTable>
+			<p:contextMenu for="orderTable">
+				<p:menuitem value="Delete" icon="ui-icon-close"
+					action="#{orderView.deleteOrder()}">
+				</p:menuitem>
+			</p:contextMenu>
 		</p:panel>
 	</ui:composition>
 </h:body>

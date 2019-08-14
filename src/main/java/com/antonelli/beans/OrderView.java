@@ -9,6 +9,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import org.primefaces.PrimeFaces;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.antonelli.entities.Order;
@@ -35,8 +36,17 @@ public class OrderView implements Serializable {
 	}
 
 	public void deleteOrder() {
-		service.getOrderRepository().delete(selectedOrder);
+		service.getOrderRepository().delete(this.selectedOrder);
+//		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("identificador:panelOrder");
+//		RequestContext.getCurrentInstance().update("foo:bar");
+//		PrimeFaces.current().ajax().update("identificador:panelOrder");
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Removed"));
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/bakery/main.xhtml");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public List<Order> getList() {
