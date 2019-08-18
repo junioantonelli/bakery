@@ -50,7 +50,13 @@
 			<artifactId>primefaces</artifactId>
 			<version>7.0</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>primefaces-extensions</artifactId>
+			<version>7.0</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -85,5 +91,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>

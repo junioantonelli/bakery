@@ -30,3 +30,13 @@ INSERT INTO order_products (
   (7, 'Ciabatta', 3.49),
   (8, 'Focaccia', 1.49),
   (9, 'Burger Buns', 2.99);
+  
+  INSERT INTO user (
+		id, 
+		name, 
+		email,
+		role
+		) VALUES
+  (1, 'John', 'john@gmail.com', 'admin'),
+  (2, 'Mary', 'mary@gmail.com', 'office'),
+  (3, 'Richard', 'richard@gmail.com', 'visitor');

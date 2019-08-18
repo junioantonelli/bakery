@@ -17,6 +17,12 @@
 			<p:growl id="growl" sticky="false">
 				<p:autoUpdate />
 			</p:growl>
+			<div
+				style="width: 99%; margin-top: 20px; margin-bottom: 22px; text-align: right">
+				<p:commandButton value="NEW"
+					action="#{layoutUI.configureView('/bakery/order_form.xhtml')}"
+					ajax="true" update="identificador" />
+			</div>
 			<p:dataTable id="orderTable" var="order" value="#{orderView.list}"
 				rowKey="#{order.id}" selection="#{orderView.selectedOrder}"
 				selectionMode="single">

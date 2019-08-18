@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>BESPOKE BAKERY</title>
+	<link rel="shortcut icon" type="image/png" href="../icons/favicon.png" />
+	<meta charset="utf-8" />
+</h:head>
+<h:body>
+	<ui:composition>
+		<p:panel header="Users">
+			<p:growl id="growl" sticky="false">
+				<p:autoUpdate />
+			</p:growl>
+			<p:dataTable id="userTable" var="user" value="#{userView.list}"
+				rowKey="#{user.id}" selection="#{userView.selectedUser}"
+				selectionMode="single">
+				<f:facet name="header">
+						User List
+					</f:facet>
+				<p:column headerText="Id">
+					<h:outputText value="#{user.id}" />
+				</p:column>
+				<p:column headerText="Name">
+					<h:outputText value="#{user.name}" />
+				</p:column>
+				<p:column headerText="Email">
+					<h:outputText value="#{user.email}" />
+				</p:column>
+				<p:column headerText="Role">
+					<h:outputText value="#{user.role}" />
+				</p:column>
+			</p:dataTable>
+			<p:contextMenu for="userTable">
+				<p:menuitem value="Delete" icon="ui-icon-close"
+					action="#{userView.deleteUser()}">
+				</p:menuitem>
+			</p:contextMenu>
+		</p:panel>
+	</ui:composition>
+</h:body>
+</html>

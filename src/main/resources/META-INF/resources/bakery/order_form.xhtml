@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:head>
+	<title>BESPOKE BAKERY</title>
+	<link rel="shortcut icon" type="image/png"
+		href="../resources/icons/favicon.png" />
+	<meta charset="utf-8" />
+</h:head>
+<h:body>
+	<ui:composition>
+		<p:panel header="Add New Order">
+			<p:growl id="growl" sticky="false">
+				<p:autoUpdate />
+			</p:growl>
+			<p:panel>
+				<p:panelGrid columns="2">
+					<p:panelGrid columns="2">
+						<p:datePicker />
+						<pe:timePicker />
+					</p:panelGrid>
+				</p:panelGrid>
+			</p:panel>
+		</p:panel>
+	</ui:composition>
+</h:body>
+</html>

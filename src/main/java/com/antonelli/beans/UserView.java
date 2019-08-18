@@ -11,31 +11,31 @@ import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.antonelli.entities.Order;
+import com.antonelli.entities.User;
 import com.antonelli.service.RegistrationService;
 
 @Named
 @RequestScoped
-public class OrderView implements Serializable {
+public class UserView implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	List<Order> list;
-	private Order selectedOrder;
+	private static final long serialVersionUID = 2948626896569895981L;
+	List<User> list;
+	private User selectedUser;
 
 	@Autowired
 	private RegistrationService service;
 
 	@PostConstruct
 	public void init() {
-		this.updateOrders();
+		this.updateUsers();
 	}
 
-	public void updateOrders() {
-		this.list = service.getOrderRepository().findAll();
+	public void updateUsers() {
+		this.list = service.getUserRepository().findAll();
 	}
 
-	public void deleteOrder() {
-		service.getOrderRepository().delete(this.selectedOrder);
+	public void deleteUser() {
+		service.getUserRepository().delete(this.selectedUser);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Removed"));
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 		try {
@@ -44,28 +44,20 @@ public class OrderView implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
-	public void newOrder() {
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("/bakery/order_form.xhtml");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
-	public List<Order> getList() {
+	public List<User> getList() {
 		return list;
 	}
 
-	public void setList(List<Order> list) {
+	public void setList(List<User> list) {
 		this.list = list;
 	}
 
-	public Order getSelectedOrder() {
-		return selectedOrder;
+	public User getSelectedUser() {
+		return selectedUser;
 	}
 
-	public void setSelectedOrder(Order selectedOrder) {
-		this.selectedOrder = selectedOrder;
+	public void setSelectedUser(User selectedUser) {
+		this.selectedUser = selectedUser;
 	}
 }
