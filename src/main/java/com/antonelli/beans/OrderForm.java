@@ -13,7 +13,7 @@ public class OrderForm implements Serializable{
 
 	private static final long serialVersionUID = -405141712673769287L;
 	private Date date;
-	private Date time;
+	private Date time; 
 	
 	public Date getDate() {
 		return date;
